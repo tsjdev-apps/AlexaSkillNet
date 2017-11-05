@@ -5,7 +5,7 @@ Project Template for Visual Studio 2017 for creating an Alexa Skill in .NET
 
 # Introduction
 
-Please download the [latest version]((https://github.com/tsjdev-apps/AlexaSkillNet/blob/master/Releases/latest/Alexa%20Skill%20.Net.zip)) of the template and place the `zip` file into your `ProjectTemplates` folder.
+Please download the [latest version](https://github.com/tsjdev-apps/AlexaSkillNet/blob/master/Releases/latest/Alexa%20Skill%20.Net.zip) of the template and place the `zip` file into your `ProjectTemplates` folder.
 
 Normally this folder should be located here: `%userprofile%\documents\Visual Studio 2017\Templates\ProjectTemplates`
 
