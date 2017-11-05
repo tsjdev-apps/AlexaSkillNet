@@ -1,4 +1,4 @@
-# AlexaSkillNet
+# Alexa Skill .Net
 
 Project Template for Visual Studio 2017 for creating an Alexa Skill in .NET
 
