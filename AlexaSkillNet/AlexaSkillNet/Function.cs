@@ -1,7 +1,9 @@
+using System;
 using Amazon.Lambda.Core;
 using Alexa.NET.Response;
 using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
+using AlexaSkillNet.Enums;
 using AlexaSkillNet.Services;
 using AlexaSkillNet.Utils;
 
@@ -27,7 +29,8 @@ namespace AlexaSkillNet
                 switch (intentRequest.Intent.Name)
                 {
                     case Statics.AmazonHelpIntent:
-                        return MakeSkillResponse(MessagesService.GetHelpMessage(), false);
+                        var helpMessage = MessagesService.GetHelpMessage();
+                        return MakeSkillResponse(helpMessage, false, CreateCard(CardType.Simple, string.Empty, helpMessage));
                     case Statics.AmazonCancelIntent:
                     case Statics.AmazonStopIntent:
                         return MakeSkillResponse(MessagesService.GetStopOrCancelMessage(), true);
@@ -39,12 +42,15 @@ namespace AlexaSkillNet
             return MakeSkillResponse(MessagesService.GetErrorMessage(), true);
         }
 
-        private static SkillResponse MakeSkillResponse(string outputSpeech, bool shouldEndSession, bool useSsml = false, string repromtText = "")
+        private static SkillResponse MakeSkillResponse(string outputSpeech, bool shouldEndSession, ICard card = null, bool useSsml = false, string repromtText = "")
         {
             var response = new ResponseBody
             {
                 ShouldEndSession = shouldEndSession,
             };
+
+            if (card != null)
+                response.Card = card;
 
             if (useSsml)
                 response.OutputSpeech = new SsmlOutputSpeech { Ssml = outputSpeech };
@@ -61,6 +67,23 @@ namespace AlexaSkillNet
             };
 
             return skillResponse;
+        }
+
+        private static ICard CreateCard(CardType cardType, string cardTitle, string cardContent, CardImage cardImage = null)
+        {
+
+            switch (cardType)
+            {
+                case CardType.Simple:
+                    return new SimpleCard { Title = cardTitle, Content = cardContent };
+                case CardType.Standard:
+                    var standardCard = new StandardCard { Title = cardTitle, Content = cardContent };
+                    if (cardImage != null)
+                        standardCard.Image = cardImage;
+                    return standardCard;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(cardType), cardType, null);
+            }
         }
     }
 }
