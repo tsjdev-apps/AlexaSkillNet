@@ -8,6 +8,12 @@ namespace AlexaSkillNet.Services
 {
     public static class EmbeddedResourceService
     {
+        /// <summary>
+        /// Gets the data from an embedded resource as json file.
+        /// </summary>
+        /// <typeparam name="TClass">The type of the class.</typeparam>
+        /// <param name="resourcePath">The path to the resource.</param>
+        /// <returns>Result of type TClass</returns>
         public static TClass GetData<TClass>(string resourcePath)
             where TClass : class
         {

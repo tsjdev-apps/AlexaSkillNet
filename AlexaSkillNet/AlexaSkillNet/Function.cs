@@ -10,6 +10,13 @@ namespace AlexaSkillNet
 {
     public class Function
     {
+        /// <summary>
+        /// Entry point of your alexa skill.
+        /// Here you have the possibility to handle all provided intents.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="context">The context.</param>
+        /// <returns></returns>
         public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
             var requestType = input.GetRequestType();

@@ -8,6 +8,12 @@ namespace AlexaSkillNet.Services
 {
     public static class HttpService
     {
+        /// <summary>
+        /// Makes an get webrequest to a webe endpoint and returns the deserialized object.
+        /// </summary>
+        /// <typeparam name="TClass">The type of the class.</typeparam>
+        /// <param name="url">The url.</param>
+        /// <returns>Result of type TClass</returns>
         public static async Task<TClass> GetRequestAsync<TClass>(string url)
             where TClass : class
         {
