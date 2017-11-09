@@ -3,16 +3,13 @@ using Alexa.NET.Response;
 using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
 using AlexaSkillNet.Services;
+using AlexaSkillNet.Utils;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 namespace AlexaSkillNet
 {
     public class Function
     {
-        private const string AmazonStopIntent = "AMAZON.StopIntent";
-        private const string AmazonCancelIntent = "AMAZON.CancelIntent";
-        private const string AmazonHelpIntent = "AMAZON.HelpIntent";
-
         public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
             var requestType = input.GetRequestType();
@@ -29,10 +26,10 @@ namespace AlexaSkillNet
 
                 switch (intentRequest.Intent.Name)
                 {
-                    case AmazonHelpIntent:
+                    case Statics.AmazonHelpIntent:
                         return MakeSkillResponse(MessagesService.GetHelpMessage(), false);
-                    case AmazonCancelIntent:
-                    case AmazonStopIntent:
+                    case Statics.AmazonCancelIntent:
+                    case Statics.AmazonStopIntent:
                         return MakeSkillResponse(MessagesService.GetStopOrCancelMessage(), true);
                     default:
                         return MakeSkillResponse(MessagesService.GetHelpMessage(), false);
