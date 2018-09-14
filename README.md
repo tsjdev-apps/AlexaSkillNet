@@ -36,7 +36,7 @@ Latest Version can be downloaded [here](https://github.com/tsjdev-apps/AlexaSkil
 ## since version 4
 * Update of [Alexa .NET NuGet Package](https://www.nuget.org/packages/Alexa.NET/) to version 1.3.0
 
-## since version 4
+## since version 5
 * Update of Nuget packages to the latest versions
 * Split `AMAZON.StopIntent` and `AMAZON.CancelIntent` messages
 * Introduce the option to reply with cards or directives
