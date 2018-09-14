@@ -10,7 +10,7 @@ namespace AlexaSkillNet.Services
         /// </summary>
         private static readonly List<string> LaunchRequestMessages = new List<string>
         {
-            "Hallo"
+            "LaunchRequest"
         };
 
         /// <summary>
@@ -18,15 +18,23 @@ namespace AlexaSkillNet.Services
         /// </summary>
         private static readonly List<string> AmazonHelpIntentMessages = new List<string>
         {
-            "Hilfe"
+            "HelpIntent"
         };
 
         /// <summary>
-        /// The amazon stop or cancel intent messages
+        /// The amazon stop intent messages
         /// </summary>
-        private static readonly List<string> AmazonStopOrCancelIntentMessages = new List<string>
+        private static readonly List<string> AmazonStopIntentMessages = new List<string>
         {
-            "Stop"
+            "StopIntent"
+        };
+
+        /// <summary>
+        /// The amazon cancel intent messages
+        /// </summary>
+        private static readonly List<string> AmazonCancelIntentMessages = new List<string>
+        {
+            "CancelIntent"
         };
 
         /// <summary>
@@ -34,7 +42,7 @@ namespace AlexaSkillNet.Services
         /// </summary>
         private static readonly List<string> ErrorMessages = new List<string>
         {
-            "Fehler"
+            "Error"
         };
 
 
@@ -57,13 +65,23 @@ namespace AlexaSkillNet.Services
         }
 
         /// <summary>
-        /// Gets a random stop or cancel message after the AMAZON.StopIntent or AMAZON.CancelIntent was recognized.
+        /// Gets a random stop message after the AMAZON.StopIntent was recognized.
         /// </summary>
         /// <returns>The random message.</returns>
-        public static string GetStopOrCancelMessage()
+        public static string GetStopMessage()
         {
-            return AmazonStopOrCancelIntentMessages.PickRandom();
+            return AmazonStopIntentMessages.PickRandom();
         }
+
+        /// <summary>
+        /// Gets a random cancel message after the AMAZON.CancelIntent was recognized.
+        /// </summary>
+        /// <returns>The random message.</returns>
+        public static string GetCancelMessage()
+        {
+            return AmazonCancelIntentMessages.PickRandom();
+        }
+
 
         /// <summary>
         /// Gets a random error message if something gone wrong.
