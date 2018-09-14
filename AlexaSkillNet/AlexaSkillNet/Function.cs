@@ -34,13 +34,13 @@ namespace AlexaSkillNet
                 switch (intentRequest.Intent.Name)
                 {
                     case Statics.AmazonHelpIntent:
-                        var helpMessage = MessagesService.GetHelpMessage();
-                        return ResponseService.CreatePlainTextSkillResponse(helpMessage, false);
-                    case Statics.AmazonCancelIntent:
-                    case Statics.AmazonStopIntent:
-                        return ResponseService.CreatePlainTextSkillResponse(MessagesService.GetStopOrCancelMessage(), true);
-                    default:
                         return ResponseService.CreatePlainTextSkillResponse(MessagesService.GetHelpMessage(), false);
+                    case Statics.AmazonCancelIntent:
+                        return ResponseService.CreatePlainTextSkillResponse(MessagesService.GetCancelMessage(), true);
+                    case Statics.AmazonStopIntent:
+                        return ResponseService.CreatePlainTextSkillResponse(MessagesService.GetStopMessage(), true);
+                    default:
+                        return ResponseService.CreatePlainTextSkillResponse(MessagesService.GetErrorMessage(), true);
                 }
             }
 
